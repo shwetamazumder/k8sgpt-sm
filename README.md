@@ -40,3 +40,11 @@ kubectl port-forward service/podtato-head-entry -n podtato-kubectl 9000
 ## Additional Resources
 Documentation: https://docs.k8sgpt.ai/SlackGitHub Organisation: https://github.com/k8sgpt-ai
 Website: https://k8sgpt.ai/
+
+
+## hackathon fall 2024
+
+after installing k8sgpt
+deploy the solace  broker in the cluster 
+introduce anomolies in the deployment yaml
+test k8sgpt
