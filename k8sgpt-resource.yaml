@@ -24,9 +24,9 @@ spec:
   #  namespace: trivy-system
   # filters:
   #   - Ingress
-  # sink:
-  #   type: slack
-  #   webhook: <webhook-url> # use the sink secret if you want to keep your webhook url private
+  sink:
+    type: slack
+    webhook: https://hooks.slack.com/services/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  # use the sink secret if you want to keep your webhook url private
   #   secret:
   #     name: slack-webhook
   #     key: url

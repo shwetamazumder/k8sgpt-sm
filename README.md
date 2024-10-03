@@ -1,50 +1,38 @@
-# K8sGPT full tutorial
 
-You can find the full tutorial under the following links:
-YouTube - video tutorial: TBD
-Anais' Blog - writtern tutorial: TBD
+# Kubernetes with AI 
 
-## Give us a star
+Hackathon 2024
 
-Make sure to give the K8sGPT project a star on GitHub:
-https://github.com/k8sgpt-ai/k8sgpt 
+# Problem
 
-## Automated Trivy Demo
+Pubsub+ Event Broker Kubernetes logs can be complex and requires expert knowledge to troubleshoot. Often the cluster logs does not have enough information to provide an immediate understanding of the problem and we need to use several other kubernetes cmds to ultimately find the root cause of the issue . This increases troubleshooting SLA. Furthermore, a running pod on a cluster may have some underlying issues which can get overlooked because they are not caught when we describe the pods. 
 
-We have set up an automated demo that runs the different commands for you. The instructions are provided below.
+# Solution
 
-Please ensure that you are connected to a Kubernetes cluster.
-
-# MacOS:
-brew install pv
-
-# Ubuntu:
-apt-get install pv
-
-Link to the project repository: https://github.com/paxtonhare/demo-magic
-
-Also, the script has to be executable:
-
-chmod +x sample.sh
-
-And then run the script:
-```
-./k8sgpt.sh
-```
-
-Port-forward podtato head application:
-```
-kubectl port-forward service/podtato-head-entry -n podtato-kubectl 9000
-```
-
-## Additional Resources
-Documentation: https://docs.k8sgpt.ai/SlackGitHub Organisation: https://github.com/k8sgpt-ai
-Website: https://k8sgpt.ai/
+A tool which constantly monitors the k8s clusters and reports on the event broker anomalies in simple english can greatly contribute in improving the troubleshooting experience and quality. 
+As part of this project I have integrated an existing kubernetes tool , K8sgpt with AI model claude-3-5-sonnet. Integration with an AI model allows an user to understand the pod issues in simple english terms with guidance on troubleshooting steps. I have also integrated k8sgpt with grafana for visualizing the issues and with slack. Integrating with slack enables us getting a realtime alert in a chat interface further simplying the alerting process.
 
 
-## hackathon fall 2024
+# Steps for building the model
 
-after installing k8sgpt
-deploy the solace  broker in the cluster 
-introduce anomolies in the deployment yaml
-test k8sgpt
+Pre-requisites:
+
+1. You should have a kubernetes cluster
+2. Have kubectl installed
+3. Have a slack webbook url for k8sgpt
+
+
+Lets Begin:
+
+1. Install k8sgpt from https://github.com/k8sgpt-ai/k8sgpt 
+    a. Configure the CRD to enable AI access
+    b. Enable grafana and Slack integration
+2. Install Pubsub+ Event Broker from Solace Kubernetes Quickstarts at https://github.com/SolaceProducts/pubsubplus-kubernetes-quickstart
+3. Introduce anomaly to event broker pods
+4. Get notfied in Slack
+5. Visualize the pods with anomalies in grafana
+6. Use K8sgpt CLI to explain the anomaly by OpenAI and get guidance on the troubleshooting steps
+
+# Future
+
+Build a customer analyzer for K8sgpt with specific rules for Pubsub+ Event Broker monitoring
